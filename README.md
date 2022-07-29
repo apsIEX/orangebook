@@ -18,4 +18,5 @@ Python code to look up the binding energies from the X-ray Data Booklet, a.k.a. 
     
     ob.find_elements(283) => finds the elements with a binding energy of 283 +/- delta (default = 5eV)
     
-    ob.XPSbook('Ti') => show the pages of the Handbook of X-ray Photoelectron Spectroscopy for the specified element (atomic symbol or number)
+    ob.XPSbook('Ti') => show the pages of the Handbook of X-ray Photoelectron Spectroscopy 
+    for the specified element (atomic symbol or number)
