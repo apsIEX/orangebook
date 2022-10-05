@@ -1,3 +1,3 @@
-from .orangebook import XPSbook, binding_energy, find_elements
+from .orangebook import xps, be, find
 
 

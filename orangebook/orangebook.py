@@ -20,7 +20,7 @@ def _elementNumber(element):
     return symbol,number
     
 
-def binding_energy(element, notation='orbital'):
+def be(element, notation='orbital'):
     """
     element is the atomic symbol or atomic number
     prints the binding energiesfor a give atom
@@ -38,7 +38,7 @@ def binding_energy(element, notation='orbital'):
                 col = _edge2orbital(col)+'\t'
             print('\t',col,val)                
 
-def find_elements(energy,delta=5, notation='orbital'):
+def find(energy,delta=5, notation='orbital'):
     """
     prints atomic number, element, edge and energy for all edges within the range: energy - delta and energy + delta
     notation: 'edge' or 'orbital'
@@ -79,7 +79,7 @@ def _df(debug=False):
     df = pd.read_csv(fpath)
     return df
 
-def XPSbook(element):
+def xps(element):
     fpath,fileList=_XPSfiles(element)
     if len(fileList)>0:
         fig=plt.figure(figsize=(10*len(fileList),10))
