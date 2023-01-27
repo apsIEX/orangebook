@@ -38,7 +38,7 @@ def be(element, notation='orbital'):
                 col = _edge2orbital(col)+'\t'
             print('\t',col,val)                
 
-def find(energy,delta=5, notation='orbital'):
+def find(energy,delta=5.0, notation='orbital'):
     """
     prints atomic number, element, edge and energy for all edges within the range: energy - delta and energy + delta
     notation: 'edge' or 'orbital'
