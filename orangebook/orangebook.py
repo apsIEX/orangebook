@@ -5,7 +5,28 @@ import fnmatch
 import pandas as pd
 import matplotlib.pyplot as plt
 
+def atomic_number(atomic_symbol):
+    """
+    prints the atomic number for the given element
+    """
+    try:
+        symbol,number = _elementNumber(atomic_symbol,be_ee='EE')
+        print(atomic_symbol, number)
+    except:
+        print('Not found in database')
     
+
+def atomic_symbol(atomic_number):
+    """
+    prints the atomic symbol for the element
+    """
+    try:
+        symbol,number = _elementNumber(atomic_number,be_ee='EE')
+        print(symbol, atomic_number)  
+    except:
+        print('Not found in database')
+   
+
 def _df(file='BE',debug=False):
     """
     returns the contents of the data file as a pandas datafram
