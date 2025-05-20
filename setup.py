@@ -20,6 +20,6 @@ setup(
     install_requires=install_requires,
     scripts=[],
     dependency_links=[],
-    package_data={'': ['PHI_XPS/*.tiff','orangebook_BE.csv','orangebook_EE.csv']}
+    package_data={'': ['PHI_XPS/*.tiff','orangebook_BE.csv','orangebook_EE.csv','electron_configurations.csv,oxidation_states.csv']}
 
 )
