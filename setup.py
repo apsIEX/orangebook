@@ -15,11 +15,11 @@ setup(
     url='https://github.com/xxx',
     maintainer='Jessica McChesney',
     maintainer_email='jmcchesn@anl.gov',
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(),
     install_requires=install_requires,
     scripts=[],
     dependency_links=[],
-    package_data={'': ['PHI_XPS/*.tiff','orangebook_BE.csv']}
+    package_data={'': ['PHI_XPS/*.tiff','orangebook_BE.csv','orangebook_EE.csv']}
 
 )
