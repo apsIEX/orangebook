@@ -26,7 +26,11 @@ Python code to look up the binding energies from the X-ray Data Booklet, a.k.a. 
     ob.ee('Cu') => prints the emission energies for Copper
     ob.ee(54) =>
 
-    To use XPS plotting (Intensity vs BE):
+
+    NOTE: The transmission function T is defined for the scienta R4000 analyzer.
+             T = 1 - 0.041*x + 9.4e-4*x^2 - 1e-5*x^3 + 3.9e-8*x^4
+                        
+    To use XPS plotting (Intensity vs BE): (The transmission function is defined for the scienta R4000 analyzer)
         from orangebook.XPS_db import *
         plot_XPS_spectrum(plot_XPS_spectrum(atoms, photon_energy, E_start=0, E_offset=0, PE=200)
     To find RSF factors for elemental composition analysis:
