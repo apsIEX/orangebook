@@ -5,6 +5,12 @@ import os
 import re
 import orangebook as ob
 import pandas as pd
+from pathlib import Path
+
+# If interpolated_results is inside orangebook/
+package_dir = Path(__file__).parent
+
+
 
 def plot_atomic_cross_sections(atom, output_folder="plots"):
     """
@@ -64,7 +70,7 @@ def RSF(atom, photon_energy,PE=200,verbose=True):
         Output: RSF_dict (dict) with keys as subshells and values as RSF values
         Warning, can be off from actual RSF"""
     
-    input_dir = "interpolated_results"
+    input_dir = str(package_dir / "interpolated_results")
     search_pattern = os.path.join(input_dir, f"*_{atom}.csv")
     matching_files = glob.glob(search_pattern)
     atom_df = pd.read_csv(matching_files[0])
@@ -120,7 +126,7 @@ def RSF(atom, photon_energy,PE=200,verbose=True):
     return RSF_dict
     
 
-def plot_XPS_spectrum(atoms, photon_energy, E_start = 0, E_offset = 0, PE= 200 ):
+def plot_XPS_spectrum(atoms, photon_energy, E_start = 0, E_offset = 0, PE= 200, scaling_factor=1 ):
     """ -Takes a list of atom with optional stoichiometric quantities (e.g., 'B2' for 2 Boron atoms) and plots the XPS spectrum.
         -Photon energy is the energy of the X-ray source used in the experiment (e.g., 1486.6 eV for Al K-alpha).
         -E_start allows you to set a custom starting point for the x-axis (binding energy).
@@ -186,7 +192,7 @@ def plot_XPS_spectrum(atoms, photon_energy, E_start = 0, E_offset = 0, PE= 200 )
                         break
                         
                 # 5. Calculate final intensity: Total RSF * Composition * Branching Fraction
-                scaled_intensity = total_rsf * qty * fraction
+                scaled_intensity = total_rsf * qty * fraction* scaling_factor
                 
                 subshells.append(f"{atom} {subshell}") 
                 binding_energies.append(be-E_offset)
@@ -226,5 +232,5 @@ def plot_XPS_spectrum(atoms, photon_energy, E_start = 0, E_offset = 0, PE= 200 )
         plt.legend(by_label.values(), by_label.keys(), title="Composition")
     
     plt.tight_layout()
-    plt.show()
+    #plt.show()
 
