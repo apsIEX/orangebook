@@ -12,13 +12,11 @@ package_dir = Path(__file__).parent
 
 
 
-def plot_atomic_cross_sections(atom, output_folder="plots"):
+def plot_atomic_cross_sections(atom):
     """
     Reads an interpolated CSV and plots Energy vs Cross-Section for all subshells.
     """
-    input_folder = "interpolated_results"
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
+    input_folder = str(package_dir / "interpolated_results")
 
     search_pattern = os.path.join(input_folder, f"*_{atom}.csv")
     input_files = sorted(glob.glob(search_pattern))
@@ -50,9 +48,6 @@ def plot_atomic_cross_sections(atom, output_folder="plots"):
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     plt.show()
-    # Save the plot
-    #plot_name = os.path.basename(file_path).replace('.csv', '.png')
-    #plt.savefig(os.path.join(output_folder, plot_name), dpi=300)
     plt.close() # Close to free up memory during batch processing
 
 
