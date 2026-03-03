@@ -60,7 +60,7 @@ def _edge2orbital(edge):
     orbital=['s','p1/2','p3/2','d3/2','d5/2','f5/2','f7/2'][l-1]
     return str(n+1)+orbital   
 
-def be(element, notation='orbital'):
+def be(element, notation='orbital', return_dict = False):
     """
     element is the atomic symbol or atomic number
     prints the binding energiesfor a give atom
@@ -68,17 +68,26 @@ def be(element, notation='orbital'):
     """
     df=_df('BE')
     symbol,number=_elementNumber(element)
-
-    print(number, symbol+":")
-
+    
+    be_dict = {}
     #col is the column header, val is the data for the given element
     for col in df.loc[df['AtomicSymbol'] == symbol].columns[2:]:
         val= df.loc[df['AtomicSymbol'] == symbol][col].values[0]
         #column in edge notion, converting to orbital notation
         if type(val)!=str and val>0:
             if notation == 'orbital':
-                col = _edge2orbital(col)+'\t'
-            print('\t',col,val)     
+                col = _edge2orbital(col)
+            be_dict[col] = val
+
+    
+    if return_dict == True:
+        return  be_dict
+    else:  
+        print(f"{number} {symbol}:")
+        for key, value in be_dict.items():
+            print(f"  {key}  {value}")
+
+             
 
 def BE(element, notation='orbital'):
     """
