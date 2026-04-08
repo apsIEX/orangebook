@@ -12,14 +12,15 @@ with open('requirements.txt') as reqs:
 setup(
     name='orangebook',
     description='X-ray Data Booklet (orange book) binding energies and Phi XPS databook ',
-    url='https://github.com/xxx',
-    maintainer='Jessica McChesney',
-    maintainer_email='jmcchesn@anl.gov',
-    version='0.0.2',
+    url='https://github.com/apsIEX/orangebook',
+    maintainer='Jessica McChesney; Amitayush Jha Thakur',
+    maintainer_email='jmcchesn@anl.gov; ajhathakur@anl.gov',
+    version='1.0',
     packages=find_packages(),
     install_requires=install_requires,
     scripts=[],
     dependency_links=[],
-    package_data={'': ['PHI_XPS/*.tiff','orangebook_BE.csv','orangebook_EE.csv','electron_configurations.csv,oxidation_states.csv']}
+    package_data={'': ['PHI_XPS/*.tiff','orangebook_BE.csv','orangebook_EE.csv','electron_configurations.csv,oxidation_states.csv','interpolated_results/*.csv']}
 
 )
+

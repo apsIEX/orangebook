@@ -121,7 +121,7 @@ def RSF(atom, photon_energy,PE=200,verbose=True):
     return RSF_dict
     
 
-def plot_XPS_spectrum(atoms, photon_energy, E_start = 0, E_offset = 0, PE= 200, scaling_factor=1 ):
+def plot_XPS_spectrum(atoms, photon_energy, E_start = 0, E_offset = 0, PE= 200, scaling_factor=1, ax=None):
     """ -Takes a list of atom with optional stoichiometric quantities (e.g., 'B2' for 2 Boron atoms) and plots the XPS spectrum.
         -Photon energy is the energy of the X-ray source used in the experiment (e.g., 1486.6 eV for Al K-alpha).
         -E_start allows you to set a custom starting point for the x-axis (binding energy).
@@ -138,11 +138,10 @@ def plot_XPS_spectrum(atoms, photon_energy, E_start = 0, E_offset = 0, PE= 200, 
         'd3/2': 2/5, 'd5/2': 3/5,
         'f5/2': 3/7, 'f7/2': 4/7
     }
-
-    plt.figure(figsize=(10, 6))
+    if ax is None:
+        ax = plt.gca()
     colors = plt.cm.tab10.colors 
     global_max_intensity = 0 
-    ax = plt.gca()
     ax.set_clip_on(True) # Enable clipping to prevent text from going outside the plot area
 
     for idx, atom_input in enumerate(atoms):
